@@ -4,7 +4,6 @@ import os
 
 
 
-# Create a flask app
 app = Flask(
   __name__,
   template_folder='templates',
@@ -47,8 +46,10 @@ def push_meet(name, desc):
 
 
 
-# def push_forum():
-
+def push_forum(name, message):
+  sql = "INSERT INTO forum (username, message) values ('" + name + "', '" + message + "')"
+  cursor.execute(sql)
+  db.commit()
 
 
 
@@ -89,8 +90,9 @@ def CreateMeetingRoom():
 
 @app.route('/PostInForum')
 def PostInForum():
-  roomname = request.args.get('username')
-  roomdesc = request.args.get('post')
+  username = request.args.get('username')
+  message = request.args.get('message')
+  push_forum(username, message)
   return "Posted successfully!"
 
 
