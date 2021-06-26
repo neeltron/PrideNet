@@ -34,6 +34,7 @@ def login():
 
 @app.route('/AnonymousLogIn')
 def AnonymousLogIn():
+  username = request.args.get('username')
   return "Logged in successfully!"
 
 
