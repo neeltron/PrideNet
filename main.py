@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import mysql.connector
 import os
+import json
 
 
 
@@ -33,9 +34,13 @@ def verify_login(username_in, pass_in):
     count += 1
   
   if count == 0:
-    return "Invalid Username/Password"
+    resp = "failure"
   else:
-    return "Success"
+    resp = "success"
+  
+  dict = {"response": resp}
+  js = json.dumps(dict)
+  return js
 
 
 
