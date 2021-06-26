@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 # Create a flask app
 app = Flask(
@@ -16,6 +16,10 @@ def hello():
 
 @app.route('/VolunteerSignUp')
 def signup():
+  username = request.args.get('username')
+  email = request.args.get('email')
+  password = request.args.get('pass')
+  dob = request.args.get('dob')
   return "Signed up successfully!"
 
 
