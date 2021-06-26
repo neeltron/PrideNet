@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+import mysql.connector
+import os
 
 
 
@@ -9,23 +11,31 @@ app = Flask(
   static_folder='static'
 )
 
-def push_signup():
+hostname = os.environ['host']
+user = os.environ['user']
+dbname = os.environ['dbname']
+dbpass = os.environ['dbpass']
+db = mysql.connector.connect(host = hostname, user = user, password = dbpass, database = dbname)
+cursor = db.cursor()
+
+def push_signup(username_up, email, password_up, dob):
+  sql = "INSERT INTO accounts (username, email, password, dob) values ('" + username_up + "', '" + email + "', '" + password_up + "', '" + dob + "')"
+  cursor.execute(sql)
+  db.commit()
+
+
+
+# def verify_login():
 
 
 
 
-
-def verify_login():
-
-
-
-
-def push_meet():
+# def push_meet():
 
 
 
 
-def push_forum():
+# def push_forum():
 
 
 
@@ -42,6 +52,7 @@ def signup():
   email = request.args.get('email')
   password_up = request.args.get('pass')
   dob = request.args.get('dob')
+  push_signup(username_up, email, password_up, dob)
   return "Signed up successfully!"
 
 
