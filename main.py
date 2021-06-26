@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 
+
+
 # Create a flask app
 app = Flask(
   __name__,
@@ -7,7 +9,27 @@ app = Flask(
   static_folder='static'
 )
 
-# Index page
+def push_signup():
+
+
+
+
+
+def verify_login():
+
+
+
+
+def push_meet():
+
+
+
+
+def push_forum():
+
+
+
+
 @app.route('/')
 def hello():
   return render_template('index.html')
