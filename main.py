@@ -12,6 +12,44 @@ app = Flask(
 def hello():
   return render_template('index.html')
 
+
+
+@app.route('/VolunteerSignUp')
+def signup():
+  return "Signed up successfully!"
+
+
+
+@app.route('/VolunteerLogIn')
+def login():
+  return "Logged in successfully!"
+
+
+
+@app.route('/AnonymousLogIn')
+def AnonymousLogIn():
+  return "Logged in successfully!"
+
+
+
+@app.route('/CreateMeetingRoom')
+def CreateMeetingRoom():
+  return "Successfully created a meeting room!"
+
+
+
+@app.route('/PostInForum')
+def PostInForum():
+  return "Posted successfully!"
+
+
+
+@app.route('/ViewForum')
+def ViewForum():
+  return "Here are the posts:"
+
+
+
 if __name__ == '__main__':
   # Run the Flask app
   app.run(
