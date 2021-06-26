@@ -99,7 +99,14 @@ def PostInForum():
 
 @app.route('/ViewForum')
 def ViewForum():
-  return "Here are the posts:"
+  sql = "SELECT * FROM forum"
+  cursor.execute(sql)
+  res = cursor.fetchall()
+  forum = ""
+  for epoch in res:
+    forum = forum + str(epoch) + "\n"
+  
+  return forum
 
 
 
