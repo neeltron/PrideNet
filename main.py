@@ -16,9 +16,9 @@ def hello():
 
 @app.route('/VolunteerSignUp')
 def signup():
-  username = request.args.get('username')
+  username_up = request.args.get('username')
   email = request.args.get('email')
-  password = request.args.get('pass')
+  password_up = request.args.get('pass')
   dob = request.args.get('dob')
   return "Signed up successfully!"
 
@@ -26,6 +26,8 @@ def signup():
 
 @app.route('/VolunteerLogIn')
 def login():
+  username_in = request.args.get('username')
+  password = request.args.get('pass')
   return "Logged in successfully!"
 
 
