@@ -41,6 +41,8 @@ def AnonymousLogIn():
 
 @app.route('/CreateMeetingRoom')
 def CreateMeetingRoom():
+  roomname = request.args.get('roomname')
+  roomdesc = request.args.get('desc')
   return "Successfully created a meeting room!"
 
 
