@@ -49,6 +49,8 @@ def CreateMeetingRoom():
 
 @app.route('/PostInForum')
 def PostInForum():
+  roomname = request.args.get('username')
+  roomdesc = request.args.get('post')
   return "Posted successfully!"
 
 
