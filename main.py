@@ -40,8 +40,10 @@ def verify_login(username_in, pass_in):
 
 
 
-# def push_meet():
-
+def push_meet(name, desc):
+  sql = "INSERT INTO meet (name, description) values ('" + name + "', '" + desc + "')"
+  cursor.execute(sql)
+  db.commit()
 
 
 
@@ -76,17 +78,11 @@ def login():
 
 
 
-@app.route('/AnonymousLogIn')
-def AnonymousLogIn():
-  username = request.args.get('username')
-  return "Logged in successfully!"
-
-
-
 @app.route('/CreateMeetingRoom')
 def CreateMeetingRoom():
   roomname = request.args.get('roomname')
   roomdesc = request.args.get('desc')
+  push_meet(roomname, roomdesc)
   return "Successfully created a meeting room!"
 
 
