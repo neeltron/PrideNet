@@ -25,8 +25,18 @@ def push_signup(username_up, email, password_up, dob):
 
 
 
-# def verify_login():
-
+def verify_login(username_in, pass_in):
+  sql = "SELECT * FROM accounts WHERE username = '" + username_in + "' AND password = '" + pass_in +"'"
+  cursor.execute(sql)
+  res = cursor.fetchall()
+  count = 0
+  for epoch in res:
+    count += 1
+  
+  if count == 0:
+    return "Invalid Username/Password"
+  else:
+    return "Success"
 
 
 
@@ -61,7 +71,8 @@ def signup():
 def login():
   username_in = request.args.get('username')
   password = request.args.get('pass')
-  return "Logged in successfully!"
+  response = verify_login(username_in, password)
+  return response
 
 
 
